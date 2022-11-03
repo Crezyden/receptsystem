@@ -1,10 +1,9 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { NewsUserdto } from '../user/dto/news-user.dto';
-import { ExistingUserdto } from '../user/dto/user.dto';
+import { NewsUserdto } from '../user/dto/newsuser.dto';
+import { CreateUserdto } from '../user/dto/Createuser.dto';
 import { UserDetails } from '../user/user-details.interface';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto/authcreate.dto';
 @ApiTags('Autoriization')
 @Controller('/auth')
 export class AuthController {
@@ -15,7 +14,7 @@ export class AuthController {
 	}
 	@Post('/login')
 	@HttpCode(HttpStatus.OK)
-	login(@Body() user: ExistingUserdto): Promise<{token:string} | null>{
+	login(@Body() user: CreateUserdto): Promise<{token:string} | null>{
 		return this.authService.login(user); 
 	}
 

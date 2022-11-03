@@ -2,5 +2,5 @@ export interface UserDetails {
 	id: string;
 	name: string;
 	email: string;
-	role: string
+	// roles: string;
 }

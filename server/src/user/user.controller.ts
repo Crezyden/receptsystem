@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UserService } from './user.service';
-// import { NewsUserdto } from './dto/news-user.dto';
 import { UserDetails } from './user-details.interface';
+import { ObjectId } from 'mongoose';
 
 @Controller('/user')
 export class UserController {
@@ -15,8 +15,16 @@ export class UserController {
 	// createUser(@Body() userDto: Userdto){
 	// 	return this.usersService.createUser(userDto)
 	// }
-	// @Get()
-	// getAllUser(@Body() userDto: ExistUserdto){
-	// 	return this.usersService.getAllUser(userDto)
-	// }
+	@Get()
+	getAllUser(){
+		return this.usersService.getAllUser();
+	}
+	// @Delete()
+    // delete() {
+    //     return this.usersService.delete();
+    // }
+	@Delete(':id')
+    delete(@Param('id') id: ObjectId) {
+        return this.usersService.delete(id);
+    }
 } 
